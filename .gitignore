@@ -10,9 +10,7 @@
 */.ipynb_checkpoints/*
 
 #custom folder ignore
-videos/*
-YOLO_DB/yolov3.weights
-dataset
+dataset/shape_predictor_68_face_landmarks.dat
 
 # IPython
 profile_default/
