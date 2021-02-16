@@ -3,3 +3,6 @@ This is the path to dlib’s pre-trained facial landmark detector. You can [down
 
 ### Preview of Points
 ![Facial landMarks](https://github.com/yeasin50/faceMaskDetection/blob/master/images/facial_landmarks_68markup-768x619.jpg)
+
+### Train Model Loss and Accuracy
+![Model Loss and Accuracy](https://github.com/yeasin50/faceMaskDetection/blob/master/plot.png)
