@@ -12,6 +12,14 @@
 #custom folder ignore
 dataset/shape_predictor_68_face_landmarks.dat
 
+#ignore datasets/images
+dataset/
+
+#ignore images
+images/example_01.png
+images/example_02.png
+images/example_03.png
+
 # IPython
 profile_default/
 ipython_config.py
