@@ -19,7 +19,8 @@ dataset/
 images/example_01.png
 images/example_02.png
 images/example_03.png
-
+mask_detector.model
+maskDetector.model
 # IPython
 profile_default/
 ipython_config.py
