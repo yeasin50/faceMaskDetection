@@ -15,6 +15,10 @@ dataset/shape_predictor_68_face_landmarks.dat
 #ignore datasets/images
 dataset/
 
+
+#output 
+output.avi
+
 #testVide
 images/testVideo.mp4
 #ignore images
