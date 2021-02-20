@@ -20,4 +20,5 @@ You can [download the detector model](http://dlib.net/files/shape_predictor_68_f
 
 
 ------
-Thank to The Sparks Foundation intern & pyImageSearch and StackOverflow 🎇🎇🎇
+Thank to The Sparks Foundation intern & pyImageSearch and StackOverflow 
+Feel free to contact :)
