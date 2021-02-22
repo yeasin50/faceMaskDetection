@@ -14,42 +14,6 @@ import cv2
 import imutils
 import numpy as np
 
-# image = cv2.imread(r'images/_DSC0022.jpg') 
-# target_img = imutils.resize(image, width=600)
-# guy_img = cv2.imread(r'images/okleft.png')
-# guy_img = imutils.resize(guy_img, width=200)
-
-# a = np.where(guy_img > 0)
-# b = np.where(target_img == 129)  # picked one of the channels in your image
-# bbox_guy = np.min(a[0]), np.max(a[0]), np.min(a[1]), np.max(a[1])
-# bbox_mask = np.min(b[0]), np.max(b[0]), np.min(b[1]), np.max(b[1])
-
-
-# guy = guy_img[bbox_guy[0]:bbox_guy[1], bbox_guy[2]:bbox_guy[3],:]
-# target = target_img[bbox_mask[0]:bbox_mask[1], bbox_mask[2]:bbox_mask[3],:]
-
-
-# guy_h, guy_w, _ = guy.shape
-# mask_h, mask_w, _ = target.shape
-# fy = mask_h / guy_h
-# fx = mask_w / guy_w
-# scaled_guy = cv2.resize(guy, (0,0), fx=fx,fy=fy)
-
-
-# for i, row in enumerate(range(bbox_mask[0], bbox_mask[1])):
-#     for j, col in enumerate(range(bbox_mask[2], bbox_mask[3])):
-#         target_img[row,col,:] = scaled_guy[i,j,:]
-
-# cv2.imshow('Image', target_img)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
-
-
-# Create extra 1 channel for overlay
-
-# In[104]:
-
-
 
 #base mode is created on w=600
 # you may thinking about  x* 8//42 this type of operation, this thing made UI responsive to any images 
@@ -97,31 +61,22 @@ def drawEmoji(image, mode):
 
     return image
 
-# In[105]:
 
+# filled image  (main img, overlayImg, possition(x,y))
+def overlay100(l_img, s_img, offset):
 
+    (x_offset,y_offset)= offset
 
-# bgImage = cv2.imread(r'images/_DSC0022.jpg', -1)
-# bgImage  = imutils.resize(image, width=640)
-# # bgImage = cv2.cvtColor(bgImage, cv2.COLOR_BGR2BGRA)
-# print(bgImage.shape)
+    s_img = cv2.cvtColor(s_img, cv2.COLOR_BGR2BGRA)
 
-# bgSad = drawEmoji(bgImage.copy(), False)
-# cv2.imshow("BGimage2", bgSad)
+    y1, y2 = y_offset, y_offset + s_img.shape[0]
+    x1, x2 = x_offset, x_offset + s_img.shape[1]
 
+    alpha_s = s_img[:, :, 3] / 255.0
+    alpha_l = 1.0 - alpha_s
 
-# bgImage = drawEmoji(bgImage.copy(), True)
-# cv2.imshow("BGimageHappy", bgImage)
-# cv2.waitKey(0)
-# cv2.destroyAllWindows()
-
-
-# if you have saing issue remove alpha channel just before saving 
-# cv2.cvtColor(bgImage, cv2.COLOR_BGRA2BGR)
-# 
-
-# In[ ]:
-
-
-
-
+    for c in range(0, 3):
+        l_img[y1:y2, x1:x2, c] = (alpha_s * s_img[:, :, c] +
+                                  alpha_l * l_img[y1:y2, x1:x2, c])
+        
+    return l_img
